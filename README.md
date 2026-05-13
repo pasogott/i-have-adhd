@@ -30,7 +30,7 @@ It says **"Great question! Let me think about this..."** for three paragraphs be
 
 **This skill fixes that.**
 
-One slash command — `/i-have-adhd` — and Claude Code reshapes every response so an ADHD brain can act on it:
+One slash command, `/i-have-adhd`, and Claude Code reshapes every response so an ADHD brain can act on it:
 
 - 🎯 **The first line is the answer.** Command, path, snippet. No warmup.
 - 🔢 **Multi-step tasks get numbered.** One action per step. Bounded.
@@ -51,13 +51,13 @@ Ten rules. One markdown file. Zero hooks. Zero magic. Stars appreciated. ⭐
 
 ### 🌫️ Normal Claude
 
-> Great question! Let's think about this. Your auth flow has a few moving pieces — you've got the middleware, the token verification, and the cookie handling. We could approach this in a few different ways.
+> Great question! Let's think about this. Your auth flow has a few moving pieces. You've got the middleware, the token verification, and the cookie handling. We could approach this in a few different ways.
 >
-> By the way, your dependency is also a bit out of date — you might want to look at that at some point.
+> By the way, your dependency is also a bit out of date, you might want to look at that at some point.
 >
 > Let me know if you want to dig deeper into any of these!
 
-*"Where do I click."* — you, after reading this
+*"Where do I click."* (you, after reading this)
 
 </td>
 <td width="50%" valign="top">
@@ -72,7 +72,7 @@ Ten rules. One markdown file. Zero hooks. Zero magic. Stars appreciated. ⭐
 >
 > Next: paste the first failing line if any test fails.
 
-*"Oh. Okay."* — you, actually doing the thing
+*"Oh. Okay."* (you, actually doing the thing)
 
 </td>
 </tr>
@@ -150,7 +150,7 @@ The skill enforces these. Edit [`skills/i-have-adhd/SKILL.md`](./skills/i-have-a
 | 7 | **Make wins visible.** | Dopamine is scarce. Buried wins don't register. |
 | 8 | **Matter-of-fact errors.** | No "uh oh." State cause and fix. |
 | 9 | **Cap lists at 5 items.** | Five ranked beats ten unranked. |
-| 10 | **No preamble. No recap. No closers.** | "Great question," "Sure!," "Hope this helps!" — all banned. Start with the answer. End when the answer is done. |
+| 10 | **No preamble. No recap. No closers.** | "Great question," "Sure!," "Hope this helps!" all banned. Start with the answer. End when the answer is done. |
 
 Five facts justify the rules. They're spelled out at the top of [SKILL.md](./skills/i-have-adhd/SKILL.md).
 
@@ -191,7 +191,7 @@ No. Terse is a vibe. This is ten specific rules tuned to how an ADHD brain reads
 No. The skill has override rules: when you ask to "explain" or "walk me through," it goes long but still cuts the preamble and the closer. Headers stay so you can skim.
 
 **Does it work without `/i-have-adhd`?**
-Yes — add a note to `~/.claude/CLAUDE.md` and it'll apply every session. See [INSTALL.md](./INSTALL.md#always-on-optional).
+Yes. Add a note to `~/.claude/CLAUDE.md` and it'll apply every session. See [INSTALL.md](./INSTALL.md#always-on-optional).
 
 **Why not just put this in CLAUDE.md and skip the plugin?**
 You can. The plugin form lets you toggle it on/off per session and share it across machines. Pick whichever feels right.
@@ -205,7 +205,7 @@ No diagnosis required. If you've ever scrolled past three paragraphs of preamble
 
 Edit `skills/i-have-adhd/SKILL.md`. Changes apply next time `/i-have-adhd` runs. If they don't, restart Claude Code.
 
-The frontmatter `description` is what the model reads to decide when to engage — keep it specific. The body is the rule set. Add, remove, rewrite — it's your brain.
+The frontmatter `description` is what the model reads to decide when to engage. Keep it specific. The body is the rule set. Add, remove, rewrite. It's your brain.
 
 ---
 

@@ -58,15 +58,25 @@ Claude Code auto-discovers `.claude/skills/` and `.claude/commands/` in the work
 
 Use this if you want the rules in every Claude Code session, everywhere.
 
-```bash
-mkdir -p ~/.claude/skills/i-have-adhd
-cp /path/to/i-have-adhd/skills/i-have-adhd/SKILL.md ~/.claude/skills/i-have-adhd/SKILL.md
+**One-liner:**
 
-mkdir -p ~/.claude/commands
-cp /path/to/i-have-adhd/commands/i-have-adhd.md ~/.claude/commands/i-have-adhd.md
+```bash
+./install-user.sh
 ```
 
-Available in every session. Still opt-in per session — type `/i-have-adhd` to activate.
+Run from the repo root. Copies the skill to `~/.claude/skills/i-have-adhd/SKILL.md` and the slash command to `~/.claude/commands/i-have-adhd.md`. Honors `$CLAUDE_CONFIG_DIR` if set. Re-running is safe (overwrites).
+
+**Manual equivalent:**
+
+```bash
+mkdir -p ~/.claude/skills/i-have-adhd
+cp skills/i-have-adhd/SKILL.md ~/.claude/skills/i-have-adhd/SKILL.md
+
+mkdir -p ~/.claude/commands
+cp commands/i-have-adhd.md ~/.claude/commands/i-have-adhd.md
+```
+
+Available in every session. Still opt-in per session. Type `/i-have-adhd` to activate.
 
 ## Always-on (optional)
 
@@ -102,7 +112,7 @@ Restart Claude Code. The plugin/command index is read at startup.
 Make sure the path you give it contains `.claude-plugin/marketplace.json`. For this repo, point at the repo root, not at `.claude-plugin/`.
 
 **The skill activates but the model still preambles.**
-Open a new session — old session context may carry over. If it still drifts, edit `skills/i-have-adhd/SKILL.md` and tighten the rule wording, then re-invoke.
+Open a new session. Old session context may carry over. If it still drifts, edit `skills/i-have-adhd/SKILL.md` and tighten the rule wording, then re-invoke.
 
 **I want different rules.**
 Edit `skills/i-have-adhd/SKILL.md`. Re-invoke `/i-have-adhd` (or restart the session) and the new rules apply.
