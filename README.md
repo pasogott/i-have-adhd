@@ -116,7 +116,7 @@ Ten rules. One markdown file. Zero hooks. Zero magic. Stars appreciated. ⭐
 ## 🚀 Install (30 seconds)
 
 ```bash
-git clone https://github.com/<you>/i-have-adhd ~/i-have-adhd
+git clone https://github.com/ayghri/i-have-adhd ~/i-have-adhd
 claude plugin marketplace add ~/i-have-adhd
 claude plugin install i-have-adhd@i-have-adhd
 ```
