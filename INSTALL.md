@@ -1,6 +1,6 @@
 # Install i-have-adhd
 
-A Claude Code plugin. One skill inside.
+One skill. Installable in Claude Code, Codex, and Cursor.
 
 ## TL;DR
 
@@ -25,6 +25,30 @@ codex plugin add i-have-adhd@i-have-adhd
 
 In Codex, type `$i-have-adhd` to request the output style explicitly.
 
+### Cursor
+
+```bash
+mkdir -p ~/.cursor/skills
+git clone --depth 1 https://github.com/ayghri/i-have-adhd.git /tmp/i-have-adhd
+cp -R /tmp/i-have-adhd/skills/i-have-adhd ~/.cursor/skills/
+rm -rf /tmp/i-have-adhd
+```
+
+Open a new Cursor Agent chat, type `/i-have-adhd`.
+
+If you already cloned the repo (e.g. for Claude Code), skip the clone and copy from that checkout:
+
+```bash
+cp -R ./skills/i-have-adhd ~/.cursor/skills/
+```
+
+Project-only install (this repo / one workspace):
+
+```bash
+mkdir -p .cursor/skills
+cp -R /path/to/i-have-adhd/skills/i-have-adhd .cursor/skills/
+```
+
 ## Verify
 
 ### Claude Code
@@ -42,6 +66,16 @@ codex plugin list
 ```
 
 Look for `i-have-adhd` in the configured `i-have-adhd` marketplace.
+
+### Cursor
+
+Confirm the skill directory exists:
+
+```bash
+ls ~/.cursor/skills/i-have-adhd/SKILL.md
+```
+
+In a new Agent chat, type `/` and look for `i-have-adhd`.
 
 ## Update
 
@@ -61,6 +95,17 @@ codex plugin remove i-have-adhd
 codex plugin add i-have-adhd@i-have-adhd
 ```
 
+### Cursor
+
+```bash
+rm -rf ~/.cursor/skills/i-have-adhd
+git clone --depth 1 https://github.com/ayghri/i-have-adhd.git /tmp/i-have-adhd
+cp -R /tmp/i-have-adhd/skills/i-have-adhd ~/.cursor/skills/
+rm -rf /tmp/i-have-adhd
+```
+
+Start a new Agent chat so Cursor re-reads the skill.
+
 ## Uninstall
 
 ### Claude Code
@@ -77,7 +122,17 @@ codex plugin remove i-have-adhd
 codex plugin marketplace remove i-have-adhd
 ```
 
+### Cursor
+
+```bash
+rm -rf ~/.cursor/skills/i-have-adhd
+```
+
+For a project install, remove `.cursor/skills/i-have-adhd` instead.
+
 ## Always-on (optional)
+
+### Claude Code
 
 To skip `/i-have-adhd` and apply the rules from message one, add to `~/.claude/CLAUDE.md`:
 
@@ -86,6 +141,10 @@ To skip `/i-have-adhd` and apply the rules from message one, add to `~/.claude/C
 
 Always follow the rules in the `i-have-adhd` skill: action-first, numbered steps, no preamble, no closers, state restated each turn.
 ```
+
+### Cursor
+
+Add the same text to **Cursor Settings → Rules → User Rules** (applies across projects), or put it in a project rule under `.cursor/rules/` with `alwaysApply: true`.
 
 ## Troubleshooting
 
@@ -96,3 +155,7 @@ Always follow the rules in the `i-have-adhd` skill: action-first, numbered steps
 **Skill activates but model still preambles.** Open a new session. Old context may carry. If it still drifts, tighten the rule wording in `skills/i-have-adhd/SKILL.md`, then re-invoke.
 
 **Want different rules.** Edit `skills/i-have-adhd/SKILL.md`. Re-invoke `/i-have-adhd` (or restart) and the new rules apply.
+
+**Cursor: `/i-have-adhd` missing after install.** Start a new Agent chat. Skills are indexed at session start. Confirm `~/.cursor/skills/i-have-adhd/SKILL.md` exists and that the frontmatter `name` matches the folder name.
+
+**Cursor: skill present but replies still preamble.** Invoke `/i-have-adhd` once in the chat, or use the Always-on User Rule above. Skill auto-invocation is relevance-based; always-on User Rules are stricter.
