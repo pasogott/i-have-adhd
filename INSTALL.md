@@ -27,6 +27,29 @@ In Codex, type `$i-have-adhd` to request the output style explicitly.
 
 ### Cursor
 
+Project (this workspace):
+
+```bash
+npx skills add ayghri/i-have-adhd
+```
+
+Global (all Cursor projects):
+
+```bash
+npx skills add ayghri/i-have-adhd -g
+```
+
+Cursor-only (skip other agents):
+
+```bash
+npx skills add ayghri/i-have-adhd -a cursor -y
+```
+
+Open a new Cursor Agent chat, type `/i-have-adhd`.
+
+<details>
+<summary>Manual fallback (clone + copy)</summary>
+
 ```bash
 mkdir -p ~/.cursor/skills
 git clone --depth 1 https://github.com/ayghri/i-have-adhd.git /tmp/i-have-adhd
@@ -34,20 +57,20 @@ cp -R /tmp/i-have-adhd/skills/i-have-adhd ~/.cursor/skills/
 rm -rf /tmp/i-have-adhd
 ```
 
-Open a new Cursor Agent chat, type `/i-have-adhd`.
-
-If you already cloned the repo (e.g. for Claude Code), skip the clone and copy from that checkout:
+Already cloned (e.g. for Claude Code):
 
 ```bash
 cp -R ./skills/i-have-adhd ~/.cursor/skills/
 ```
 
-Project-only install (this repo / one workspace):
+Project-only without the CLI:
 
 ```bash
 mkdir -p .cursor/skills
 cp -R /path/to/i-have-adhd/skills/i-have-adhd .cursor/skills/
 ```
+
+</details>
 
 ## Verify
 
@@ -69,11 +92,13 @@ Look for `i-have-adhd` in the configured `i-have-adhd` marketplace.
 
 ### Cursor
 
-Confirm the skill directory exists:
-
 ```bash
-ls ~/.cursor/skills/i-have-adhd/SKILL.md
+npx skills list
+# or, if installed globally:
+npx skills ls -g
 ```
+
+Look for `i-have-adhd`. Or confirm the file exists: `ls ~/.cursor/skills/i-have-adhd/SKILL.md` (global) / `.cursor/skills/i-have-adhd/SKILL.md` (project).
 
 In a new Agent chat, type `/` and look for `i-have-adhd`.
 
@@ -98,10 +123,9 @@ codex plugin add i-have-adhd@i-have-adhd
 ### Cursor
 
 ```bash
-rm -rf ~/.cursor/skills/i-have-adhd
-git clone --depth 1 https://github.com/ayghri/i-have-adhd.git /tmp/i-have-adhd
-cp -R /tmp/i-have-adhd/skills/i-have-adhd ~/.cursor/skills/
-rm -rf /tmp/i-have-adhd
+npx skills update i-have-adhd
+# or, if installed globally:
+npx skills update -g
 ```
 
 Start a new Agent chat so Cursor re-reads the skill.
@@ -125,10 +149,12 @@ codex plugin marketplace remove i-have-adhd
 ### Cursor
 
 ```bash
-rm -rf ~/.cursor/skills/i-have-adhd
+npx skills remove i-have-adhd
+# or, if installed globally:
+npx skills remove i-have-adhd -g
 ```
 
-For a project install, remove `.cursor/skills/i-have-adhd` instead.
+Manual fallback: `rm -rf ~/.cursor/skills/i-have-adhd` or `.cursor/skills/i-have-adhd`.
 
 ## Always-on (optional)
 
