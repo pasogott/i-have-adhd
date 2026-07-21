@@ -33,6 +33,8 @@ If the answer is a command, path, or snippet, it goes first. Prose comes after, 
 
 If the work takes more than one step, write a numbered list. Each step is one bounded action. No step contains "and then" twice.
 
+Use the fewest steps that still work. Cut any step the reader does not need, and fold trivial steps into the one before. A short path finished beats a complete path abandoned.
+
 Bad: "First open the file, find the function, swap it out, then run the tests."
 
 Good:
@@ -115,6 +117,7 @@ Before sending, delete:
 2. The last sentence if it asks "anything else?" or recaps what just happened.
 3. Any "by the way" sidebar.
 4. Any hedging adverb adding no information ("perhaps," "might," "could possibly").
+5. Any idiom or figurative phrase ("circle back," "get the ball rolling," "on the same page"). Replace with the literal action.
 
 Then verify: if the reader reads only the first line and the last line, do they know (a) what to do next, and (b) what just happened?
 
