@@ -1,6 +1,6 @@
 # Install i-have-adhd
 
-One skill. Claude Code, Codex, Antigravity, Cursor.
+One skill. Claude Code, Codex, Antigravity, and any harness that reads agent skills.
 
 <details>
 <summary><strong>Claude Code</strong></summary>
@@ -135,23 +135,26 @@ Always follow the rules in the `i-have-adhd` skill: action-first, numbered steps
 </details>
 
 <details>
-<summary><strong>Cursor</strong></summary>
+<summary><strong>Cursor, OpenCode, Amp, Pi, and any other agent-skills harness</strong></summary>
+
+Works with any harness that reads agent skills. Swap `-a <agent>` for yours.
 
 ### Install
 
 ```bash
-npx skills add ayghri/i-have-adhd        # this workspace
-npx skills add ayghri/i-have-adhd -g     # all projects
-npx skills add ayghri/i-have-adhd -a cursor -y   # Cursor only
+npx skills add ayghri/i-have-adhd                  # this workspace
+npx skills add ayghri/i-have-adhd -g               # all projects
+npx skills add ayghri/i-have-adhd -a cursor -y     # one agent only
+npx skills add ayghri/i-have-adhd -a opencode -y
 ```
 
-New Agent chat, type `/i-have-adhd`.
+New agent chat, type `/i-have-adhd`.
 
-Without the CLI:
+Without the CLI, copy the skill folder into whatever path your agent scans:
 
 ```bash
 git clone https://github.com/ayghri/i-have-adhd
-mkdir -p ~/.cursor/skills                              # or .cursor/skills for this project only
+mkdir -p ~/.cursor/skills     # Cursor. Use .agents/skills for OpenCode, or your agent's own path
 cp -R i-have-adhd/skills/i-have-adhd ~/.cursor/skills/
 ```
 
@@ -178,7 +181,7 @@ npx skills remove i-have-adhd -g    # if installed globally
 
 ### Always-on (optional)
 
-Paste into **Cursor Settings → Rules → User Rules**, or a project rule under `.cursor/rules/` with `alwaysApply: true`:
+Paste this into your agent's persistent rules file. Cursor: **Settings → Rules → User Rules**, or a project rule under `.cursor/rules/` with `alwaysApply: true`. OpenCode: `~/.config/opencode/AGENTS.md`.
 
 ```markdown
 ## Output style
@@ -206,4 +209,4 @@ No middle ground. If you did not turn it on, it is off.
 
 **Want different rules.** Fork, edit `skills/i-have-adhd/SKILL.md`, install your fork: `claude plugin marketplace add <your-username>/i-have-adhd`.
 
-**Cursor: skill missing after install.** Start a new Agent chat. Confirm `~/.cursor/skills/i-have-adhd/SKILL.md` exists and its frontmatter `name` matches the folder name.
+**Skill missing after `npx skills add`.** Start a new agent chat. Skills are indexed at session start. Confirm the folder landed where your agent scans (`~/.cursor/skills/` for Cursor, `.agents/skills/` for OpenCode) and that the frontmatter `name` matches the folder name.
