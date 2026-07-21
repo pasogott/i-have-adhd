@@ -37,26 +37,19 @@ Or keep it installed and turn it off: `claude plugin disable i-have-adhd`.
 
 ### Always-on (optional)
 
-Add to `~/.claude/CLAUDE.md`:
+A `SessionStart` hook loads the full ruleset at the start of every session, no `/i-have-adhd` needed:
 
-```markdown
-## Output style
-
-The reader has ADHD. Shape every response so it can be acted on:
-
-1. Lead with the answer or next action: command, path, or snippet first.
-2. Number multi-step work; one bounded action per step.
-3. End with one next action doable in under two minutes.
-4. Finish the current issue before raising a new one.
-5. Restate progress each turn ("step 3 of 5 done").
-6. Give time estimates in concrete units, never "a bit".
-7. After a change, show what now works.
-8. Errors: state location, cause, and fix. No drama.
-9. Cap lists at 5 items.
-10. No preamble, no recaps, no closers.
-
-Exceptions: explain fully when asked to explain. Confirm before destructive actions. After three failed fixes, stop and name the doubtful assumption. If the request is ambiguous, ask one short question.
+```bash
+touch ~/.claude/.i-have-adhd-always
 ```
+
+Back to on-demand:
+
+```bash
+rm ~/.claude/.i-have-adhd-always
+```
+
+The hook only fires when the flag file exists, so installing the plugin changes nothing by itself. Honors `$CLAUDE_CONFIG_DIR` if you've moved your config dir. "stop adhd mode" still turns it off for the current session.
 
 </details>
 
@@ -247,13 +240,16 @@ Exceptions: explain fully when asked to explain. Confirm before destructive acti
 
 1. **Installed, not invoked.** Nothing happens. `SKILL.md` sets `disable-model-invocation: true`, so the model never sees the skill and never applies the rules on its own.
 2. **You type `/i-have-adhd`.** Rules on for that session. "stop adhd mode" or "normal mode" turns them off.
-3. **You add the always-on config above.** Rules on from message one, every session.
+3. **You touch `~/.claude/.i-have-adhd-always`** (Claude Code). A `SessionStart` hook loads the full ruleset from message one, every session.
+4. **You add the always-on snippet above** (other harnesses). Keeps the core rules in your agent's persistent context.
 
 No middle ground. If you did not turn it on, it is off.
 
 ## Troubleshooting
 
 **`/i-have-adhd` not in autocomplete.** Restart the agent. The plugin index is read at startup.
+
+**Always-on flag has no effect.** Update the plugin (`claude plugin marketplace update i-have-adhd`) and restart. Hooks are read at startup, and the flag needs the plugin version that ships `hooks/hooks.json`.
 
 **`claude plugin marketplace add` fails.** Use the `owner/repo` form. A local path must point at the repo root, not `.claude-plugin/`.
 
