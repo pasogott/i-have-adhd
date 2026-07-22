@@ -7,6 +7,8 @@
       "--output-format",
       "json",
       "--no-session-persistence",
+      "--setting-sources",
+      "",
       "--tools",
       ""
     ],
